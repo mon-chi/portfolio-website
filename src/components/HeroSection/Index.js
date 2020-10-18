@@ -1,8 +1,25 @@
-import React from "react";
-import { HeroContainer, HeroBg, VideoBg } from "./HeroElements";
+import React, { useState } from "react";
+import { Button } from "../ButtonElement";
+import {
+  HeroContainer,
+  HeroBg,
+  VideoBg,
+  HeroContent,
+  HeroH1,
+  HeroP,
+  HeroBtnWrapper,
+  ArrowForward,
+  ArrowRight,
+} from "./HeroElements";
 import Video from "../../videos/video.mp4";
 
 const HeroSection = () => {
+  const [hover, setHover] = useState(false);
+
+  const onHover = () => {
+    setHover(!hover);
+  };
+
   return (
     <HeroContainer id="home">
       <HeroBg>
@@ -11,6 +28,17 @@ const HeroSection = () => {
       <HeroContent>
         <HeroH1>HELLO</HeroH1>
         <HeroP>Sign Up</HeroP>
+        <HeroBtnWrapper>
+          <Button
+            to="signup"
+            onMouseEnter={onHover}
+            onMouseLeave={onHover}
+            primary="true"
+            dark="true"
+          >
+            Get Started {hover ? <ArrowForward /> : <ArrowRight />}
+          </Button>
+        </HeroBtnWrapper>
       </HeroContent>
     </HeroContainer>
   );
