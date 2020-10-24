@@ -41,6 +41,7 @@ export const SidebarMenu = styled.ul`
   grid-template-columns: 1fr;
   grid-template-rows: repeat(6, 80px);
   text-align: center;
+  z-index: 1;
 
   @media screen and (max-width: 480px) {
     grid-template-rows: repeat(6, 60px);
@@ -62,6 +63,24 @@ export const SidebarLink = styled(LinkScroll)`
   &:hover {
     color: #01bf71;
     transition: 0.2s ease-in-out;
+  }
+  &::before {
+    content: attr(data-text);
+    position: absolute;
+    width: 100%;
+    font-size: 4em;
+    z-index: -1;
+    opacity: 0;
+    text-align: center;
+    color: grey;
+    overflow: hidden;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  &:hover::before {
+    opacity: 1;
+    transition: 0.6s ease-in-out;
   }
 `;
 
